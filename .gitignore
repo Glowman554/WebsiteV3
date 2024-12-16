@@ -19,6 +19,7 @@ pnpm-debug.log*
 
 config.json
 data.db
+data.sql
 
 # macOS-specific files
 .DS_Store

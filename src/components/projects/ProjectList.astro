@@ -1,0 +1,27 @@
+---
+import { actions } from 'astro:actions';
+import { ProjectEditorButtons } from './ProjectEditor';
+
+interface Props {
+    editMode: boolean;
+    limit: number;
+}
+const { editMode, limit } = Astro.props;
+const projects = await Astro.callAction(actions.projects.loadAll.orThrow, { limit });
+---
+
+{
+    projects.map((project) => (
+        <div class="field-small">
+            <h3 class="section" style={{ margin: '0rem' }}>
+                <a href={project.link}>{project.name}</a>
+                {editMode && (
+                    <div>
+                        <ProjectEditorButtons project={project} client:load />
+                    </div>
+                )}
+            </h3>
+            {project.description}
+        </div>
+    ))
+}

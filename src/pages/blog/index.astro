@@ -1,0 +1,11 @@
+---
+import Layout from '../../components/Layout.astro';
+import PostList from '../../components/posts/PostList.astro';
+
+export const prerender = false;
+---
+
+<Layout title="Glowman554 - Blog">
+    <h1>Blog</h1>
+    <PostList editMode={false} />
+</Layout>

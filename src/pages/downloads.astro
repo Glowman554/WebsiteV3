@@ -1,0 +1,12 @@
+---
+import StaticLoadingSpinner from '@glowman554/base-components/src/loading/StaticLoadingSpinner.astro';
+import DownloadList from '../components/downloads/DownloadList.astro';
+import Layout from '../components/Layout.astro';
+---
+
+<Layout title="Glowman554 - Downloads">
+    <h1>Downloads</h1>
+    <DownloadList server:defer editMode={false}>
+        <StaticLoadingSpinner slot="fallback" />
+    </DownloadList>
+</Layout>

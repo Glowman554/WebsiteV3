@@ -1,0 +1,71 @@
+---
+import Layout from '../components/Layout.astro';
+
+function getAge() {
+    const dayOfBirth = new Date();
+    dayOfBirth.setFullYear(2005);
+    dayOfBirth.setMonth(3);
+    dayOfBirth.setDate(18);
+    dayOfBirth.setHours(0);
+    dayOfBirth.setMinutes(0);
+    dayOfBirth.setSeconds(0);
+
+    const today = new Date();
+
+    let age = today.getFullYear() - dayOfBirth.getFullYear();
+
+    const m = today.getMonth() - dayOfBirth.getMonth();
+
+    if (m < 0 || (m === 0 && today.getDate() < dayOfBirth.getDate())) {
+        age--;
+    }
+
+    return age;
+}
+---
+
+<Layout title="Glowman554 - About me">
+    <h1>whoami</h1>
+    <div>
+        <p>Hi everyone! I'm Janick, also known as Glowman554.</p>
+        <br />
+        <p>I'm {getAge()} years old and passionate about coding and the furry community.</p>
+        <br />
+        <p>
+            I enjoy coding my own operating system, a fascinating way to learn how computers work internally. I also
+            love programming Discord bots and exploring many other tech projects.
+        </p>
+    </div>
+
+    <br />
+    <hr />
+    <br />
+
+    <h2>Programming languages</h2>
+    <ul>
+        <li>
+            <img src="/res/labels/java.svg" />
+        </li>
+        <li>
+            <img src="/res/labels/javascript.svg" />
+        </li>
+        <li>
+            <img src="/res/labels/c_cpp.svg" />
+        </li>
+    </ul>
+    <h2>Tools</h2>
+    <ul>
+        <li>
+            <img src="/res/labels/discord.svg" />
+        </li>
+        <li>
+            <img src="/res/labels/vscode.svg" />
+        </li>
+        <li>
+            <img src="/res/labels/git.svg" />
+        </li>
+        <li>
+            <img src="/res/labels/github.svg" />
+        </li>
+    </ul>
+</Layout>

@@ -1,0 +1,23 @@
+---
+import { actions } from 'astro:actions';
+import { DownloadEditorButtons } from './DownloadEditor';
+
+interface Props {
+    editMode: boolean;
+}
+const { editMode } = Astro.props;
+const downloads = await Astro.callAction(actions.downloads.loadAll.orThrow, {});
+---
+
+{
+    downloads.map((download) => (
+        <div class="section">
+            <a href={download.link}>{download.name}</a>
+            {editMode && (
+                <div>
+                    <DownloadEditorButtons download={download} client:load />
+                </div>
+            )}
+        </div>
+    ))
+}

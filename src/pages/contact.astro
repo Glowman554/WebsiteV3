@@ -1,0 +1,30 @@
+---
+import Layout from '../components/Layout.astro';
+import MessageField from '../components/MessageField';
+---
+
+<Layout title="Glowman554 - Contact">
+    <h2>Contact Me:</h2>
+
+    <table>
+        <tbody>
+            <tr>
+                <td>Discord</td>
+                <td>
+                    <a href="https://discordapp.com/users/584344177257480192">glowman554</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Instagram</td>
+                <td>
+                    <a href="https://www.instagram.com/glowman434/">glowman434</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br />
+    <hr />
+    <br />
+    <MessageField client:load />
+</Layout>

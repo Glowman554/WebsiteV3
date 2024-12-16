@@ -11,6 +11,12 @@ export function validateOrThrow<T>(schema: ZodSchema<T>, data: unknown): T {
     return result.data;
 }
 const schema = z.object({
+    openAi: z.object({
+        chatModel: z.string().default('gpt-4o'),
+        imageModel: z.string().default('dall-e-3'),
+        authToken: z.string(),
+    }),
+    uploadThing: z.object({ authToken: z.string() }),
     database: z.object({ authToken: z.string().optional(), url: z.string() }),
 });
 

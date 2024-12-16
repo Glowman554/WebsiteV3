@@ -1,0 +1,11 @@
+---
+import AdministratorOnly from '../../components/AdministratorOnly';
+import Layout from '../../components/Layout.astro';
+---
+
+<Layout title="Glowman554 - Internal">
+    <AdministratorOnly client:load />
+    <a href="/internal/downloads">Downloads</a>
+    <a href="/internal/projects">Projects</a>
+    <a href="/internal/posts">Blog posts</a>
+</Layout>

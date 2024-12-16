@@ -1,0 +1,30 @@
+---
+import { actions } from 'astro:actions';
+import { PostEditorButtons } from './PostEditor';
+
+interface Props {
+    editMode: boolean;
+}
+const { editMode } = Astro.props;
+const posts = await Astro.callAction(actions.posts.loadAll.orThrow, {});
+---
+
+<table>
+    {
+        posts.map((post) => (
+            <tr>
+                <td>{post.creationDate.toLocaleDateString()}:</td>
+                <td style={{ width: '100%' }}>
+                    <div class="section-small">
+                        <a href={'/blog/' + post.id}>{post.title}</a>
+                        {editMode && (
+                            <div>
+                                <PostEditorButtons client:load post={post} />
+                            </div>
+                        )}
+                    </div>
+                </td>
+            </tr>
+        ))
+    }
+</table>

@@ -19,3 +19,31 @@ export const Sessions = sqliteTable('sessions', {
         .default(sql`(strftime('%s', 'now'))`)
         .notNull(),
 });
+
+export const Projects = sqliteTable('projects', {
+    id: integer('id').primaryKey({ autoIncrement: true }),
+    name: text('name').notNull(),
+    link: text('link').notNull(),
+    description: text('description').notNull(),
+    creationDate: integer('creation_date', { mode: 'timestamp' })
+        .default(sql`(strftime('%s', 'now'))`)
+        .notNull(),
+});
+
+export const Posts = sqliteTable('posts', {
+    id: integer('id').primaryKey({ autoIncrement: true }),
+    title: text('title').notNull(),
+    content: text('content').notNull(),
+    creationDate: integer('creation_date', { mode: 'timestamp' })
+        .default(sql`(strftime('%s', 'now'))`)
+        .notNull(),
+});
+
+export const Downloads = sqliteTable('downloads', {
+    id: integer('id').primaryKey({ autoIncrement: true }),
+    name: text('name').notNull(),
+    link: text('link').notNull(),
+    creationDate: integer('creation_date', { mode: 'timestamp' })
+        .default(sql`(strftime('%s', 'now'))`)
+        .notNull(),
+});

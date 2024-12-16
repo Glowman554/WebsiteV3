@@ -1,0 +1,15 @@
+---
+import AdministratorOnly from '../../components/AdministratorOnly';
+import StaticLoadingSpinner from '@glowman554/base-components/src/loading/StaticLoadingSpinner.astro';
+import PostList from '../../components/posts/PostList.astro';
+import PostNewButton from '../../components/posts/PostNewButton';
+import Layout from '../../components/Layout.astro';
+---
+
+<Layout title="Glowman554 - Posts (internal)">
+    <AdministratorOnly client:load />
+    <PostNewButton client:load />
+    <PostList server:defer editMode={true}>
+        <StaticLoadingSpinner slot="fallback" />
+    </PostList>
+</Layout>

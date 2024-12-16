@@ -1,0 +1,15 @@
+---
+import AdministratorOnly from '../../components/AdministratorOnly';
+import StaticLoadingSpinner from '@glowman554/base-components/src/loading/StaticLoadingSpinner.astro';
+import DownloadList from '../../components/downloads/DownloadList.astro';
+import DownloadNewButton from '../../components/downloads/DownloadNewButton';
+import Layout from '../../components/Layout.astro';
+---
+
+<Layout title="Glowman554 - Downloads (internal)">
+    <AdministratorOnly client:load />
+    <DownloadNewButton client:load />
+    <DownloadList server:defer editMode={true}>
+        <StaticLoadingSpinner slot="fallback" />
+    </DownloadList>
+</Layout>

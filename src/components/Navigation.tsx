@@ -4,6 +4,12 @@ export default function () {
     return (
         <Navigation>
             <Entry href="/">Home</Entry>
+            <Entry href="/about">About me</Entry>
+            <Entry href="/blog">Blog</Entry>
+            <Entry href="/projects">Projects</Entry>
+            <Entry href="/contact">Contact me</Entry>
+            <Entry href="/downloads">Downloads</Entry>
+            <Entry href="https://github.com/Glowman554">GitHub</Entry>
         </Navigation>
     );
 }

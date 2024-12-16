@@ -1,0 +1,32 @@
+---
+import { actions } from 'astro:actions';
+import { marked } from 'marked';
+import Layout from '../../components/Layout.astro';
+
+export const prerender = false;
+const { id } = Astro.params;
+const post = await Astro.callAction(actions.posts.load.orThrow, { id: parseInt(id || '0') });
+const content = marked.parse(post.content);
+---
+
+<style is:global>
+    img {
+        max-width: 100%;
+    }
+
+    pre > code {
+        width: 100%;
+        background-color: gray;
+        display: block;
+        overflow: auto;
+        padding: 1rem;
+    }
+</style>
+
+<Layout title={'Glowman554 - ' + post.title}>
+    <div>
+        <h1 class="section">{post.title}</h1>
+    </div>
+    <hr />
+    <main set:html={content} />
+</Layout>

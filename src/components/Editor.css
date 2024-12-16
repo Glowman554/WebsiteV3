@@ -1,0 +1,28 @@
+.editor-container {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0.5rem;
+    border-radius: 7px;
+
+    background-color: #b8b8b8ff;
+}
+
+.editor-title-input {
+    padding: 0.5rem;
+    border-radius: 7px;
+    border: none;
+
+    margin-bottom: 0.5rem;
+}
+
+.editor-content-textfield {
+    height: 50vh;
+    resize: none;
+
+    padding: 0.5rem;
+    border-radius: 7px;
+    border: none;
+
+    margin-bottom: 0.5rem;
+}
