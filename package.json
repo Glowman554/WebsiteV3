@@ -1,0 +1,32 @@
+{
+    "name": "webstarter",
+    "type": "module",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "astro": "astro",
+        "format": "npx prettier . --write --ignore-unknown",
+        "db:push": "drizzle-kit push",
+        "db:studio": "drizzle-kit studio",
+        "db:generate": "drizzle-kit generate",
+        "db:migrate": "drizzle-kit migrate"
+    },
+    "dependencies": {
+        "@astrojs/node": "^9.0.0",
+        "@astrojs/solid-js": "^5.0.0",
+        "@glowman554/base-components": "^1.0.4",
+        "@libsql/client": "^0.14.0",
+        "@node-rs/bcrypt": "^1.10.7",
+        "astro": "^5.0.5",
+        "drizzle-orm": "^0.38.0",
+        "solid-js": "^1.9.3",
+        "zod": "^3.24.1"
+    },
+    "devDependencies": {
+        "drizzle-kit": "^0.30.0",
+        "prettier": "^3.4.2",
+        "prettier-plugin-astro": "^0.14.1"
+    }
+}
