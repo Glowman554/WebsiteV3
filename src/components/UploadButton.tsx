@@ -1,6 +1,6 @@
 import { useContext } from 'solid-js';
-import type { UploadResult } from '../actions/uploads';
 import Loading, { LoadingContext } from '@glowman554/base-components/src/loading/Loading';
+import { actions } from 'astro:actions';
 
 export interface Props {
     callback: (url: string) => void;
@@ -20,12 +20,20 @@ function Wrapped(props: Props) {
         try {
             for (let i = 0; i < files.length; i++) {
                 const file = files.item(i)!;
-                const res = await fetch('/api/upload/' + file.name, {
+                const prepared = await actions.uploads.prepare.orThrow({ name: file.name });
+
+                const res = await fetch(prepared.url, {
                     method: 'POST',
                     body: file,
+                    headers: {
+                        Authentication: prepared.uploadToken,
+                    },
                 });
-                const json = (await res.json()) as UploadResult;
-                props.callback(json.url);
+                if (!res.ok) {
+                    throw new Error('Failed to upload file');
+                }
+
+                props.callback(prepared.url);
             }
         } catch (e) {
             loading.setError(String(e));

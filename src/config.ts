@@ -16,7 +16,10 @@ const schema = z.object({
         imageModel: z.string().default('dall-e-3'),
         authToken: z.string(),
     }),
-    uploadThing: z.object({ authToken: z.string() }),
+    upload: z.object({
+        uploadServer: z.string().url(),
+        authToken: z.string(),
+    }),
     database: z.object({ authToken: z.string().optional(), url: z.string() }),
 });
 
