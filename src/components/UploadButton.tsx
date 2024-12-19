@@ -35,10 +35,10 @@ function Wrapped(props: Props) {
     };
     return (
         <>
-            <button type="button" onClick={() => fileInput?.click()}>
+            <button class="button" type="button" onClick={() => fileInput?.click()}>
                 Upload
             </button>
-            <input type="file" ref={fileInput} style={{ display: 'none' }} onInput={handleFileChange} />
+            <input type="file" ref={fileInput} class="hidden" onInput={handleFileChange} />
         </>
     );
 }

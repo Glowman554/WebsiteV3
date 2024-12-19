@@ -2,7 +2,6 @@ import { createSignal, Show, untrack, useContext } from 'solid-js';
 import { actions } from 'astro:actions';
 import Loading, { LoadingContext } from '@glowman554/base-components/src/loading/Loading';
 import { withQuery } from '@glowman554/base-components/src/query/Query';
-import './Editor.css';
 
 function Wrapped() {
     const loading = useContext(LoadingContext);
@@ -10,7 +9,7 @@ function Wrapped() {
     const [messageSent, setMessageSent] = createSignal(false);
 
     return (
-        <div class="editor-container">
+        <div class="flex flex-col rounded-xl bg-slate-300 p-2">
             <div class="center">
                 <h4>Send me a message</h4>
             </div>
@@ -24,12 +23,12 @@ function Wrapped() {
                 }
             >
                 <textarea
-                    class="editor-content-textfield"
-                    style={{ height: '10rem' }}
+                    class="mb-2 h-40 resize-none rounded-xl border-none p-2"
                     value={message()}
                     onInput={(e) => setMessage(e.target.value)}
                 />
                 <button
+                    class="button"
                     onClick={() => {
                         withQuery(
                             () => actions.messages.message.orThrow({ message: untrack(message) }),

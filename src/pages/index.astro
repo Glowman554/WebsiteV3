@@ -5,13 +5,13 @@ import ProjectList from '../components/projects/ProjectList.astro';
 ---
 
 <Layout title="Glowman554 - Home">
-    <h1>Hello my name is Glowman554 and I'm happy to meet you 👍!</h1>
-    <h1>I'm mainly here to have fun 👾!</h1>
+    <h1 class="text-3xl">Hello my name is Glowman554 and I'm happy to meet you 👍!</h1>
+    <h1 class="text-2xl">I'm mainly here to have fun 👾!</h1>
     <br />
     <hr />
     <br />
 
-    <h2>My Latest Projects</h2>
+    <h2 class="text-xl underline">My Latest Projects</h2>
     <ProjectList server:defer limit={5} editMode={false}>
         <StaticLoadingSpinner slot="fallback" />
     </ProjectList>

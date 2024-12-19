@@ -32,16 +32,18 @@ function Wrapped(props: Props) {
                 submit();
             }}
         >
-            <div class="editor-container">
+            <div class="flex flex-col rounded-xl bg-slate-300 p-2">
                 <textarea
-                    class="editor-content-textfield"
+                    class="mb-2 h-[50vh] resize-none rounded-xl border-none p-2"
                     value={prompt()}
                     onChange={(e) => setPrompt(e.target.value)}
                     required
                 />
 
                 <div class="center">
-                    <button type="submit">Generate</button>
+                    <button class="button" type="submit">
+                        Generate
+                    </button>
                 </div>
             </div>
         </form>

@@ -21,16 +21,39 @@ function Wrapped(props: Props) {
                 submit();
             }}
         >
-            <div class="section">
-                Username
-                <input type="text" onChange={(e) => setEmail(e.target.value)} value={email()} required />
-            </div>
-            <div class="section">
-                Password
-                <input type="password" onChange={(e) => setPassword(e.target.value)} value={password()} required />
-            </div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="text-nowrap pr-2">Username</td>
+                        <td class="w-full">
+                            <input
+                                type="text"
+                                class="w-full"
+                                onChange={(e) => setEmail(e.target.value)}
+                                value={email()}
+                                required
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap pr-2"> Password</td>
+                        <td class="w-full">
+                            <input
+                                type="password"
+                                class="w-full"
+                                onChange={(e) => setPassword(e.target.value)}
+                                value={password()}
+                                required
+                            />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
             <div class="center">
-                <button type="submit">Login</button>
+                <button class="button" type="submit">
+                    Login
+                </button>
             </div>
         </form>
     );

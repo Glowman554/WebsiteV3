@@ -1,9 +1,9 @@
-import Navigation, { Entry } from '@glowman554/base-components/src/generic/Navigation';
+import Navigation, { Entry, Home } from '@glowman554/base-components/src/generic/Navigation';
 
 export default function () {
     return (
         <Navigation>
-            <Entry href="/">Home</Entry>
+            <Home href="/">Home</Home>
             <Entry href="/about">About me</Entry>
             <Entry href="/blog">Blog</Entry>
             <Entry href="/projects">Projects</Entry>

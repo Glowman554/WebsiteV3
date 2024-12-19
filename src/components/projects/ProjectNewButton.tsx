@@ -8,7 +8,9 @@ export default function () {
     const [newVisible, setNewVisible] = createSignal(false);
     return (
         <>
-            <button onClick={() => setNewVisible(true)}>New project</button>
+            <button class="button" onClick={() => setNewVisible(true)}>
+                New project
+            </button>
             <Overlay visible={newVisible()}>
                 <ProjectEditor
                     submit={(name, link, description, loading) =>

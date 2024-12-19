@@ -38,20 +38,51 @@ function Wrapped(props: Props) {
                 submit();
             }}
         >
-            <div class="section">
-                Name
-                <input type="text" value={name()} onChange={(e) => setName(e.target.value)} required />
-            </div>
-            <div class="section">
-                Link
-                <input type="text" value={link()} onChange={(e) => setLink(e.target.value)} required />
-            </div>
-            <div class="section">
-                Description
-                <input type="text" value={description()} onChange={(e) => setDescription(e.target.value)} required />
-            </div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="text-nowrap pr-2">Name</td>
+                        <td class="w-full">
+                            <input
+                                type="text"
+                                class="w-full"
+                                value={name()}
+                                onChange={(e) => setName(e.target.value)}
+                                required
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap pr-2">Link</td>
+                        <td class="w-full">
+                            <input
+                                type="text"
+                                class="w-full"
+                                value={link()}
+                                onChange={(e) => setLink(e.target.value)}
+                                required
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap pr-2">Description</td>
+                        <td class="w-full">
+                            <input
+                                type="text"
+                                class="w-full"
+                                value={description()}
+                                onChange={(e) => setDescription(e.target.value)}
+                                required
+                            />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br />
+
             <div class="center">
-                <button type="submit">
+                <button class="button" type="submit">
                     <Show when={props.initial} fallback={<>Create</>}>
                         Update
                     </Show>

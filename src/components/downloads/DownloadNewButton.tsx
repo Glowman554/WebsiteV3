@@ -8,7 +8,9 @@ export default function () {
     const [newVisible, setNewVisible] = createSignal(false);
     return (
         <>
-            <button onClick={() => setNewVisible(true)}>New download</button>
+            <button class="button" onClick={() => setNewVisible(true)}>
+                New download
+            </button>
             <Overlay visible={newVisible()}>
                 <DownloadEditor
                     submit={(name, link, loading) =>

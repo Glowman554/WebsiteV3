@@ -9,7 +9,6 @@ import Overlay from '@glowman554/base-components/src/generic/Overlay';
 import DeleteButton from '@glowman554/base-components/src/generic/DeleteButton';
 import Query, { withQuery } from '@glowman554/base-components/src/query/Query';
 import EditButton from '@glowman554/base-components/src/generic/EditButton';
-import '../Editor.css';
 
 export type Props =
     | {
@@ -45,9 +44,9 @@ function Wrapped(props: Props) {
                     submit();
                 }}
             >
-                <div class="editor-container">
+                <div class="flex flex-col rounded-xl bg-slate-300 p-2">
                     <input
-                        class="editor-title-input"
+                        class="mb-2 rounded-xl border-none p-2"
                         type="text"
                         value={title()}
                         onChange={(e) => setTitle(e.target.value)}
@@ -55,22 +54,22 @@ function Wrapped(props: Props) {
                     />
 
                     <textarea
-                        class="editor-content-textfield"
+                        class="mb-2 h-[50vh] resize-none rounded-xl border-none p-2"
                         value={content()}
                         onChange={(e) => setContent(e.target.value)}
                         required
                     />
 
                     <div class="center">
-                        <button type="submit">
+                        <button class="button" type="submit">
                             <Show when={props.initial} fallback={<>Create</>}>
                                 Update
                             </Show>
                         </button>
-                        <button type="button" onClick={() => setTextGeneratorVisible(true)}>
+                        <button class="button" type="button" onClick={() => setTextGeneratorVisible(true)}>
                             Generate text
                         </button>
-                        <button type="button" onClick={() => setImageGeneratorVisible(true)}>
+                        <button class="button" type="button" onClick={() => setImageGeneratorVisible(true)}>
                             Generate image
                         </button>
                         <UploadButton callback={(url) => setContent(content() + '\n' + `![image](${url})`)} />

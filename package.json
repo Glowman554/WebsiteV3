@@ -16,7 +16,8 @@
     "dependencies": {
         "@astrojs/node": "^9.0.0",
         "@astrojs/solid-js": "^5.0.0",
-        "@glowman554/base-components": "^1.0.4",
+        "@astrojs/tailwind": "^5.1.3",
+        "@glowman554/base-components": "^1.0.9",
         "@libsql/client": "^0.14.0",
         "@node-rs/bcrypt": "^1.10.7",
         "astro": "^5.0.5",
@@ -24,12 +25,16 @@
         "marked": "^15.0.4",
         "openai": "^4.76.3",
         "solid-js": "^1.9.3",
+        "tailwindcss": "^3.4.17",
         "uploadthing": "^7.4.1",
         "zod": "^3.24.1"
     },
     "devDependencies": {
+        "@astrojs/check": "^0.9.4",
         "drizzle-kit": "^0.30.0",
         "prettier": "^3.4.2",
-        "prettier-plugin-astro": "^0.14.1"
+        "prettier-plugin-astro": "^0.14.1",
+        "prettier-plugin-tailwindcss": "^0.6.9",
+        "typescript": "^5.7.2"
     }
 }

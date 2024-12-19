@@ -25,7 +25,7 @@ const content = marked.parse(post.content);
 
 <Layout title={'Glowman554 - ' + post.title}>
     <div>
-        <h1 class="section">{post.title}</h1>
+        <h1 class="section text-3xl">{post.title}</h1>
     </div>
     <hr />
     <main set:html={content} />

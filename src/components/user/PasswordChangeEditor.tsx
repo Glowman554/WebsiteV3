@@ -48,30 +48,46 @@ function Wrapped(props: Props) {
                 submit();
             }}
         >
-            <div class="section">
-                Old password
-                <input
-                    type="password"
-                    value={oldPassword()}
-                    onChange={(e) => setOldPassword(e.target.value)}
-                    required
-                />
-            </div>
-
-            <div class="section">
-                New password
-                <input type="password" value={newPassword()} onInput={(e) => setNewPassword(e.target.value)} required />
-            </div>
-
-            <div class="section">
-                Repeat new password
-                <input
-                    type="password"
-                    value={newPasswordControl()}
-                    onInput={(e) => setNewPasswordControl(e.target.value)}
-                    required
-                />
-            </div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="text-nowrap pr-2">Old password</td>
+                        <td class="w-full">
+                            <input
+                                type="password"
+                                class="w-full"
+                                value={oldPassword()}
+                                onChange={(e) => setOldPassword(e.target.value)}
+                                required
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap pr-2">New password</td>
+                        <td class="w-full">
+                            <input
+                                type="password"
+                                class="w-full"
+                                value={newPassword()}
+                                onInput={(e) => setNewPassword(e.target.value)}
+                                required
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap pr-2">Repeat new password</td>
+                        <td class="w-full">
+                            <input
+                                type="password"
+                                class="w-full"
+                                value={newPasswordControl()}
+                                onInput={(e) => setNewPasswordControl(e.target.value)}
+                                required
+                            />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
             <Show when={!passwordOk(passwordResult())}>
                 <PasswordValidationResult {...passwordResult()} />

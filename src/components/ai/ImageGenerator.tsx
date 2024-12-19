@@ -40,30 +40,26 @@ function Wrapped(props: Props) {
                 submit();
             }}
         >
-            <div class="editor-container">
+            <div class="flex flex-col rounded-xl bg-slate-300 p-2">
                 <Show when={previewUrl()}>
                     <div class="center">
-                        <img
-                            style={{
-                                'max-height': '40vh',
-                                'min-width': '0',
-                            }}
-                            src={previewUrl()}
-                        />
+                        <img class="max-h-[40vh] min-w-0" src={previewUrl()} />
                     </div>
                     <br />
                 </Show>
 
                 <input
-                    class="editor-title-input"
+                    class="mb-2 rounded-xl border-none p-2"
                     value={prompt()}
                     onChange={(e) => setPrompt(e.target.value)}
                     required
                 />
 
                 <div class="center">
-                    <button type="submit">Generate</button>
-                    <button type="button" onClick={use}>
+                    <button class="button" type="submit">
+                        Generate
+                    </button>
+                    <button class="button" type="button" onClick={use}>
                         Use
                     </button>
                 </div>

@@ -8,7 +8,9 @@ export default function () {
     const [newVisible, setNewVisible] = createSignal(false);
     return (
         <>
-            <button onClick={() => setNewVisible(true)}>New post</button>
+            <button class="button" onClick={() => setNewVisible(true)}>
+                New post
+            </button>
             <Overlay visible={newVisible()}>
                 <PostEditor
                     submit={(title, content, loading) =>

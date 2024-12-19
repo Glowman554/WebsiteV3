@@ -13,12 +13,12 @@ const posts = await Astro.callAction(actions.posts.loadAll.orThrow, {});
     {
         posts.map((post) => (
             <tr>
-                <td>{post.creationDate.toLocaleDateString()}:</td>
-                <td style={{ width: '100%' }}>
+                <td class="text-nowrap">{post.creationDate.toLocaleDateString()}:</td>
+                <td class="w-full">
                     <div class="section-small">
                         <a href={'/blog/' + post.id}>{post.title}</a>
                         {editMode && (
-                            <div>
+                            <div class="flex flex-row">
                                 <PostEditorButtons client:load post={post} />
                             </div>
                         )}

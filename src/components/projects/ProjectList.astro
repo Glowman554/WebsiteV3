@@ -13,10 +13,10 @@ const projects = await Astro.callAction(actions.projects.loadAll.orThrow, { limi
 {
     projects.map((project) => (
         <div class="field-small">
-            <h3 class="section" style={{ margin: '0rem' }}>
+            <h3 class="section !m-0">
                 <a href={project.link}>{project.name}</a>
                 {editMode && (
-                    <div>
+                    <div class="flex flex-row">
                         <ProjectEditorButtons project={project} client:load />
                     </div>
                 )}
