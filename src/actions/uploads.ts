@@ -9,11 +9,28 @@ interface UploadResult {
     url: string;
 }
 
+type PartialUploadResult = Omit<UploadResult, 'uploadToken'>;
+
 export const uploads = {
     uploadFromUrl: defineAction({
-        input: z.object({ url: z.string().url() }),
+        input: z.object({ url: z.string().url(), name: z.string().optional() }),
         async handler(input, context) {
-            throw new Error('Not implemented');
+            await permission(context, (u) => u.administrator);
+
+            const res = await fetch(config.upload.uploadServer + '/api/v1/fromUrl', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authentication: config.upload.authToken,
+                },
+                body: JSON.stringify({ url: input.url, name: input.name }),
+            });
+            if (!res.ok) {
+                throw new Error('Failed to upload from URL');
+            }
+
+            const json = (await res.json()) as PartialUploadResult;
+            return json;
         },
     }),
 

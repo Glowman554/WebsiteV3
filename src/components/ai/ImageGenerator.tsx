@@ -25,10 +25,10 @@ function Wrapped(props: Props) {
         const prev = previewUrl();
         if (prev) {
             withQuery(
-                () => actions.uploads.uploadFromUrl.orThrow({ url: prev }),
+                () => actions.uploads.uploadFromUrl.orThrow({ url: prev, name: `ai-${Date.now()}.png` }),
                 loading,
                 true,
-                untrack(() => props.callback)
+                (res) => untrack(() => props.callback)(res.url)
             );
         }
     };
