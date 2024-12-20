@@ -11,8 +11,10 @@ const downloads = await Astro.callAction(actions.downloads.loadAll.orThrow, {});
 
 {
     downloads.map((download) => (
-        <div class="section">
-            <a href={download.link}>{download.name}</a>
+        <div class="section rounded-lg bg-slate-200 p-2">
+            <a class="underline" href={download.link}>
+                {download.name}
+            </a>
             {editMode && (
                 <div class="flex flex-row">
                     <DownloadEditorButtons download={download} client:load />

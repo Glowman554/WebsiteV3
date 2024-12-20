@@ -6,6 +6,7 @@ import Layout from '../components/Layout.astro';
 
 <Layout title="Glowman554 - Projects">
     <h1 class="text-3xl">My Projects</h1>
+    <br />
     <ProjectList server:defer limit={1000} editMode={false}>
         <StaticLoadingSpinner slot="fallback" />
     </ProjectList>

@@ -26,7 +26,6 @@
         "openai": "^4.76.3",
         "solid-js": "^1.9.3",
         "tailwindcss": "^3.4.17",
-        "uploadthing": "^7.4.1",
         "zod": "^3.24.1"
     },
     "devDependencies": {

@@ -12,6 +12,7 @@ import ProjectList from '../components/projects/ProjectList.astro';
     <br />
 
     <h2 class="text-xl underline">My Latest Projects</h2>
+    <br />
     <ProjectList server:defer limit={5} editMode={false}>
         <StaticLoadingSpinner slot="fallback" />
     </ProjectList>

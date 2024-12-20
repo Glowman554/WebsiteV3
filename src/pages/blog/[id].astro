@@ -10,23 +10,43 @@ const content = marked.parse(post.content);
 ---
 
 <style is:global>
-    img {
-        max-width: 100%;
+    .markdown img {
+        @apply max-w-full;
     }
 
-    pre > code {
-        width: 100%;
-        background-color: gray;
-        display: block;
-        overflow: auto;
-        padding: 1rem;
+    .markdown pre > code {
+        @apply block w-full overflow-auto bg-gray-400 p-4;
+    }
+
+    .markdown h1 {
+        @apply mb-2 mt-2 text-3xl underline decoration-slate-400;
+    }
+
+    .markdown h2 {
+        @apply mb-2 mt-2 text-2xl underline decoration-slate-400;
+    }
+
+    .markdown h3 {
+        @apply mb-2 mt-2 text-xl underline decoration-slate-400;
+    }
+
+    .markdown h4 {
+        @apply mb-2 mt-2 text-lg underline decoration-slate-400;
+    }
+
+    .markdown a {
+        @apply underline;
+    }
+
+    .markdown ul {
+        @apply list-disc pl-8;
+    }
+
+    .markdown ol {
+        @apply list-decimal pl-8;
     }
 </style>
 
 <Layout title={'Glowman554 - ' + post.title}>
-    <div>
-        <h1 class="section text-3xl">{post.title}</h1>
-    </div>
-    <hr />
-    <main set:html={content} />
+    <main class="markdown" set:html={content} />
 </Layout>
