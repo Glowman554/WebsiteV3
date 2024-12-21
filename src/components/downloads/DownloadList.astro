@@ -11,7 +11,7 @@ const downloads = await Astro.callAction(actions.downloads.loadAll.orThrow, {});
 
 {
     downloads.map((download) => (
-        <div class="section rounded-lg bg-slate-200 p-2">
+        <div class="section rounded-lg bg-neutral-800 p-2">
             <a class="underline" href={download.link}>
                 {download.name}
             </a>

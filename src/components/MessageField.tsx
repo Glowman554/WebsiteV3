@@ -9,7 +9,7 @@ function Wrapped() {
     const [messageSent, setMessageSent] = createSignal(false);
 
     return (
-        <div class="flex flex-col rounded-xl bg-slate-300 p-2">
+        <div class="flex flex-col rounded-xl bg-neutral-800 p-2">
             <div class="center">
                 <h4>Send me a message</h4>
             </div>
@@ -23,7 +23,7 @@ function Wrapped() {
                 }
             >
                 <textarea
-                    class="mb-2 h-40 resize-none rounded-xl border-none p-2"
+                    class="input mb-2 h-40 resize-none"
                     value={message()}
                     onInput={(e) => setMessage(e.target.value)}
                 />

@@ -40,7 +40,7 @@ function Wrapped(props: Props) {
                 submit();
             }}
         >
-            <div class="flex flex-col rounded-xl bg-slate-300 p-2">
+            <div class="flex flex-col rounded-xl bg-neutral-700 p-2">
                 <Show when={previewUrl()}>
                     <div class="center">
                         <img class="max-h-[40vh] min-w-0" src={previewUrl()} />
@@ -48,12 +48,7 @@ function Wrapped(props: Props) {
                     <br />
                 </Show>
 
-                <input
-                    class="mb-2 rounded-xl border-none p-2"
-                    value={prompt()}
-                    onChange={(e) => setPrompt(e.target.value)}
-                    required
-                />
+                <input class="input mb-2" value={prompt()} onChange={(e) => setPrompt(e.target.value)} required />
 
                 <div class="center">
                     <button class="button" type="submit">

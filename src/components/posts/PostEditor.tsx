@@ -44,9 +44,9 @@ function Wrapped(props: Props) {
                     submit();
                 }}
             >
-                <div class="flex flex-col rounded-xl bg-slate-300 p-2">
+                <div class="flex flex-col rounded-xl bg-neutral-700 p-2">
                     <input
-                        class="mb-2 rounded-xl border-none p-2"
+                        class="input mb-2"
                         type="text"
                         value={title()}
                         onChange={(e) => setTitle(e.target.value)}
@@ -54,7 +54,7 @@ function Wrapped(props: Props) {
                     />
 
                     <textarea
-                        class="mb-2 h-[50vh] resize-none rounded-xl border-none p-2"
+                        class="input mb-2 h-[50vh] resize-none"
                         value={content()}
                         onChange={(e) => setContent(e.target.value)}
                         required

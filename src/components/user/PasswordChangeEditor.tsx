@@ -55,7 +55,7 @@ function Wrapped(props: Props) {
                         <td class="w-full">
                             <input
                                 type="password"
-                                class="w-full"
+                                class="input w-full"
                                 value={oldPassword()}
                                 onChange={(e) => setOldPassword(e.target.value)}
                                 required
@@ -67,7 +67,7 @@ function Wrapped(props: Props) {
                         <td class="w-full">
                             <input
                                 type="password"
-                                class="w-full"
+                                class="input w-full"
                                 value={newPassword()}
                                 onInput={(e) => setNewPassword(e.target.value)}
                                 required
@@ -79,7 +79,7 @@ function Wrapped(props: Props) {
                         <td class="w-full">
                             <input
                                 type="password"
-                                class="w-full"
+                                class="input w-full"
                                 value={newPasswordControl()}
                                 onInput={(e) => setNewPasswordControl(e.target.value)}
                                 required

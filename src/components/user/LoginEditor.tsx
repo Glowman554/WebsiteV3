@@ -28,7 +28,7 @@ function Wrapped(props: Props) {
                         <td class="w-full">
                             <input
                                 type="text"
-                                class="w-full"
+                                class="input w-full"
                                 onChange={(e) => setEmail(e.target.value)}
                                 value={email()}
                                 required
@@ -40,7 +40,7 @@ function Wrapped(props: Props) {
                         <td class="w-full">
                             <input
                                 type="password"
-                                class="w-full"
+                                class="input w-full"
                                 onChange={(e) => setPassword(e.target.value)}
                                 value={password()}
                                 required

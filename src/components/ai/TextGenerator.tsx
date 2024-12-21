@@ -32,9 +32,9 @@ function Wrapped(props: Props) {
                 submit();
             }}
         >
-            <div class="flex flex-col rounded-xl bg-slate-300 p-2">
+            <div class="flex flex-col rounded-xl bg-neutral-700 p-2">
                 <textarea
-                    class="mb-2 h-[50vh] resize-none rounded-xl border-none p-2"
+                    class="input mb-2 h-[50vh] resize-none"
                     value={prompt()}
                     onChange={(e) => setPrompt(e.target.value)}
                     required

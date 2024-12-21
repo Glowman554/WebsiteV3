@@ -12,7 +12,7 @@ const projects = await Astro.callAction(actions.projects.loadAll.orThrow, { limi
 
 {
     projects.map((project) => (
-        <div class="field-small mb-4 rounded-lg bg-slate-200 p-2">
+        <div class="field-small mb-4 rounded-lg bg-neutral-800 p-2">
             <h3 class="section !m-0 text-xl">
                 <a class="underline" href={project.link}>
                     {project.name}
