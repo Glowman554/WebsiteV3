@@ -22,14 +22,22 @@ function Wrapped(props: Props) {
                 const file = files.item(i)!;
                 const prepared = await actions.uploads.prepare.orThrow({ name: file.name });
 
-                const res = await fetch(prepared.url, {
-                    method: 'POST',
-                    body: file,
-                    headers: {
-                        Authentication: prepared.uploadToken,
-                    },
+                const xhr = new XMLHttpRequest();
+                const success = await new Promise<boolean>((resolve) => {
+                    xhr.upload.addEventListener('progress', (event) => {
+                        if (event.lengthComputable) {
+                            loading.setProgress((event.loaded / event.total) * 100);
+                        }
+                    });
+                    0;
+                    xhr.addEventListener('loadend', () => {
+                        resolve(xhr.readyState == 4 && xhr.status == 200);
+                    });
+                    xhr.open('POST', prepared.url, true);
+                    xhr.setRequestHeader('Authentication', prepared.uploadToken);
+                    xhr.send(file);
                 });
-                if (!res.ok) {
+                if (!success) {
                     throw new Error('Failed to upload file');
                 }
 
@@ -53,7 +61,7 @@ function Wrapped(props: Props) {
 
 export default function (props: Props) {
     return (
-        <Loading initial={false}>
+        <Loading initial={false} progressBar={true}>
             <Wrapped {...props} />
         </Loading>
     );
