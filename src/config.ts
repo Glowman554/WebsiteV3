@@ -20,6 +20,9 @@ const schema = z.object({
         uploadServer: z.string().url(),
         authToken: z.string(),
     }),
+    blueSky: z.object({
+        did: z.string(),
+    }),
     database: z.object({ authToken: z.string().optional(), url: z.string() }),
 });
 
