@@ -1,5 +1,3 @@
-import { defineAction } from 'astro:actions';
-import { z } from 'astro:schema';
 import { authentication } from './authentication';
 import { messages } from './messages';
 import { projects } from './projects';

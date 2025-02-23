@@ -1,15 +1,14 @@
 ---
 import AdministratorOnly from '../../components/AdministratorOnly';
-import StaticLoadingSpinner from '@glowman554/base-components/src/loading/StaticLoadingSpinner.astro';
 import ProjectList from '../../components/projects/ProjectList.astro';
 import ProjectNewButton from '../../components/projects/ProjectNewButton';
 import Layout from '../../components/Layout.astro';
+
+export const prerender = false;
 ---
 
-<Layout title="Glowman554 - Projects (internal)">
+<Layout title="Glowman554 - Projects (internal)" description="For internal use only.">
     <AdministratorOnly client:load />
     <ProjectNewButton client:load />
-    <ProjectList server:defer limit={1000} editMode={true}>
-        <StaticLoadingSpinner slot="fallback" />
-    </ProjectList>
+    <ProjectList limit={1000} editMode={true} />
 </Layout>

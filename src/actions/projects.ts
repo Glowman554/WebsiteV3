@@ -50,7 +50,7 @@ export const projects = {
 
     loadAll: defineAction({
         input: z.object({ limit: z.number() }),
-        async handler(input, context) {
+        async handler(input) {
             return (await db
                 .select()
                 .from(Projects)

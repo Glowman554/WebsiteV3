@@ -14,7 +14,7 @@ function Wrapped() {
                 Change password
             </button>
 
-            <Overlay visible={changePasswordVisible()}>
+            <Overlay visible={changePasswordVisible()} reset={() => setChangePasswordVisible(false)}>
                 <PasswordChangeEditor
                     submit={(oldPassword, newPassword, loading) =>
                         withQuery(

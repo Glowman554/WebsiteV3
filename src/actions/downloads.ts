@@ -34,7 +34,7 @@ export const downloads = {
     }),
 
     loadAll: defineAction({
-        async handler(input, context) {
+        async handler() {
             return await db.select().from(Downloads).orderBy(desc(Downloads.creationDate));
         },
     }),

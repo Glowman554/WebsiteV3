@@ -4,7 +4,7 @@ import { z } from 'astro:schema';
 export const messages = {
     message: defineAction({
         input: z.object({ message: z.string() }),
-        handler(input, context) {
+        handler(input) {
             console.log(input);
         },
     }),

@@ -69,7 +69,7 @@ export async function permission(context: ActionAPIContext, check: (u: User) => 
 
 export const authentication = {
     status: defineAction({
-        async handler(input, context) {
+        async handler(_, context) {
             return await authenticate(context);
         },
     }),

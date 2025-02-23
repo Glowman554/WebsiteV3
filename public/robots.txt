@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /internal
+
+Sitemap: https://glowman554.de/sitemap-index.xml

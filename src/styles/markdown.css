@@ -1,0 +1,39 @@
+@import 'tailwindcss';
+
+@layer components {
+    .markdown img {
+        @apply max-w-full;
+    }
+
+    .markdown pre > code {
+        @apply block w-full overflow-auto bg-gray-400 p-4;
+    }
+
+    .markdown h1 {
+        @apply mt-2 mb-2 text-3xl underline decoration-neutral-400;
+    }
+
+    .markdown h2 {
+        @apply mt-2 mb-2 text-2xl underline decoration-neutral-400;
+    }
+
+    .markdown h3 {
+        @apply mt-2 mb-2 text-xl underline decoration-neutral-400;
+    }
+
+    .markdown h4 {
+        @apply mt-2 mb-2 text-lg underline decoration-neutral-400;
+    }
+
+    .markdown a {
+        @apply underline;
+    }
+
+    .markdown ul {
+        @apply list-disc pl-8;
+    }
+
+    .markdown ol {
+        @apply list-decimal pl-8;
+    }
+}

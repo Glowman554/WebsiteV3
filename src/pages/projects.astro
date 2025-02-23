@@ -1,13 +1,12 @@
 ---
-import StaticLoadingSpinner from '@glowman554/base-components/src/loading/StaticLoadingSpinner.astro';
 import ProjectList from '../components/projects/ProjectList.astro';
 import Layout from '../components/Layout.astro';
+
+export const prerender = false;
 ---
 
-<Layout title="Glowman554 - Projects">
+<Layout title="Glowman554 - Projects" description="A list of my projects.">
     <h1 class="text-3xl">My Projects</h1>
     <br />
-    <ProjectList server:defer limit={1000} editMode={false}>
-        <StaticLoadingSpinner slot="fallback" />
-    </ProjectList>
+    <ProjectList limit={1000} editMode={false} />
 </Layout>

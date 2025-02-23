@@ -39,7 +39,7 @@ export const posts = {
     }),
 
     loadAll: defineAction({
-        async handler(input, context) {
+        async handler() {
             return (await db
                 .select({ id: Posts.id, title: Posts.title, creationDate: Posts.creationDate })
                 .from(Posts)
@@ -49,7 +49,7 @@ export const posts = {
 
     load: defineAction({
         input: z.object({ id: z.number() }),
-        async handler(input, context) {
+        async handler(input) {
             const post = await db.select().from(Posts).where(eq(Posts.id, input.id)).get();
             if (!post) {
                 throw new Error('Post not found');

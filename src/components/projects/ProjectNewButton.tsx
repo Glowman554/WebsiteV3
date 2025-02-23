@@ -11,7 +11,7 @@ export default function () {
             <button class="button" onClick={() => setNewVisible(true)}>
                 New project
             </button>
-            <Overlay visible={newVisible()}>
+            <Overlay visible={newVisible()} reset={() => setNewVisible(false)}>
                 <ProjectEditor
                     submit={(name, link, description, loading) =>
                         withQuery(

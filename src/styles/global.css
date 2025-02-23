@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+
+@source "../**/*.tsx";
+@source "../**/*.astro";
+
+@import '../../node_modules/@glowman554/base-components/src/styles.css';

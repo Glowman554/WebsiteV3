@@ -41,7 +41,7 @@ function Wrapped(props: Props) {
             <table>
                 <tbody>
                     <tr>
-                        <td class="text-nowrap pr-2">Name</td>
+                        <td class="pr-2 text-nowrap">Name</td>
                         <td class="w-full">
                             <input
                                 type="text"
@@ -53,7 +53,7 @@ function Wrapped(props: Props) {
                         </td>
                     </tr>
                     <tr>
-                        <td class="text-nowrap pr-2">Link</td>
+                        <td class="pr-2 text-nowrap">Link</td>
                         <td class="w-full">
                             <input
                                 type="text"
@@ -108,7 +108,7 @@ export function DownloadEditorButtons(props: { download: Download }) {
                 id={props.download.id}
             />
             <EditButton callback={() => setEditVisible(true)} />
-            <Overlay visible={editVisible()}>
+            <Overlay visible={editVisible()} reset={() => setEditVisible(false)}>
                 <DownloadEditor
                     initial={props.download}
                     submit={(name, link, loading, id) =>

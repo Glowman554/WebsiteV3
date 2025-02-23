@@ -11,7 +11,7 @@ export default function () {
             <button class="button" onClick={() => setNewVisible(true)}>
                 New post
             </button>
-            <Overlay visible={newVisible()}>
+            <Overlay visible={newVisible()} reset={() => setNewVisible(false)}>
                 <PostEditor
                     submit={(title, content, loading) =>
                         withQuery(

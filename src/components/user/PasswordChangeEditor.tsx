@@ -51,7 +51,7 @@ function Wrapped(props: Props) {
             <table>
                 <tbody>
                     <tr>
-                        <td class="text-nowrap pr-2">Old password</td>
+                        <td class="pr-2 text-nowrap">Old password</td>
                         <td class="w-full">
                             <input
                                 type="password"
@@ -63,7 +63,7 @@ function Wrapped(props: Props) {
                         </td>
                     </tr>
                     <tr>
-                        <td class="text-nowrap pr-2">New password</td>
+                        <td class="pr-2 text-nowrap">New password</td>
                         <td class="w-full">
                             <input
                                 type="password"
@@ -75,7 +75,7 @@ function Wrapped(props: Props) {
                         </td>
                     </tr>
                     <tr>
-                        <td class="text-nowrap pr-2">Repeat new password</td>
+                        <td class="pr-2 text-nowrap">Repeat new password</td>
                         <td class="w-full">
                             <input
                                 type="password"
@@ -98,7 +98,11 @@ function Wrapped(props: Props) {
             </Show>
 
             <div class="center">
-                <button type="submit" disabled={!passwordOk(passwordResult()) || newPassword() != newPasswordControl()}>
+                <button
+                    type="submit"
+                    class="button"
+                    disabled={!passwordOk(passwordResult()) || newPassword() != newPasswordControl()}
+                >
                     Change
                 </button>
             </div>

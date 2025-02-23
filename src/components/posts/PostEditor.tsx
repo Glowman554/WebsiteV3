@@ -76,7 +76,7 @@ function Wrapped(props: Props) {
                     </div>
                 </div>
             </form>
-            <Overlay visible={textGeneratorVisible()}>
+            <Overlay visible={textGeneratorVisible()} reset={() => setTextGeneratorVisible(false)}>
                 <TextGenerator
                     callback={(text) => {
                         setContent(text);
@@ -85,7 +85,7 @@ function Wrapped(props: Props) {
                     system="You are an AI assistant generating technical blog posts written in markdown. You should not use anything that is not included in standard markdown."
                 />
             </Overlay>
-            <Overlay visible={imageGeneratorVisible()}>
+            <Overlay visible={imageGeneratorVisible()} reset={() => setImageGeneratorVisible(false)}>
                 <ImageGenerator
                     callback={(url) => {
                         setContent(content() + '\n' + `![image](${url})`);
@@ -122,7 +122,7 @@ export function PostEditorButtons(props: { post: PartialPost }) {
                 id={props.post.id}
             />
             <EditButton callback={() => setEditVisible(true)} />
-            <Overlay visible={editVisible()}>
+            <Overlay visible={editVisible()} reset={() => setEditVisible(false)}>
                 <Query f={() => actions.posts.load.orThrow({ id: props.post.id })}>
                     {(post) => (
                         <PostEditor

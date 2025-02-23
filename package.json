@@ -14,18 +14,19 @@
         "db:migrate": "drizzle-kit migrate"
     },
     "dependencies": {
-        "@astrojs/node": "^9.0.0",
-        "@astrojs/solid-js": "^5.0.1",
-        "@astrojs/tailwind": "^5.1.4",
-        "@glowman554/base-components": "^1.1.4",
+        "@astrojs/node": "^9.1.0",
+        "@astrojs/sitemap": "^3.2.1",
+        "@astrojs/solid-js": "^5.0.4",
+        "@glowman554/base-components": "^1.2.0",
         "@libsql/client": "^0.14.0",
         "@node-rs/bcrypt": "^1.10.7",
-        "astro": "^5.1.5",
+        "@tailwindcss/vite": "^4.0.8",
+        "astro": "^5.3.0",
         "drizzle-orm": "^0.38.0",
         "marked": "^15.0.4",
         "openai": "^4.76.3",
         "solid-js": "^1.9.3",
-        "tailwindcss": "^3.4.17",
+        "tailwindcss": "^4.0.8",
         "zod": "^3.24.1"
     },
     "devDependencies": {

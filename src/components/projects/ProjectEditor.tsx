@@ -119,7 +119,7 @@ export function ProjectEditorButtons(props: { project: Project }) {
                 id={props.project.id}
             />
             <EditButton callback={() => setEditVisible(true)} />
-            <Overlay visible={editVisible()}>
+            <Overlay visible={editVisible()} reset={() => setEditVisible(false)}>
                 <ProjectEditor
                     initial={props.project}
                     submit={(name, link, description, loading, id) =>
