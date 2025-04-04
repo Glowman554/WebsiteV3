@@ -1,0 +1,55 @@
+---
+import Layout from '../components/Layout.astro';
+
+export const prerender = false;
+---
+
+<Layout
+    title="Glowman554 - MicroOS"
+    description="MicroOS - A small and simple operating system for x86 architecture."
+>
+    <script is:inline src="/microos/libv86.js"></script>
+
+    <div id="screen_container" style="width: 100%; display: flex; justify-content: center; align-items: center;">
+        <div style="white-space: pre; font: 14px monospace; line-height: 14px"></div>
+        <canvas style="display: none"></canvas>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const mb = 1024 * 1024;
+
+            var emulator = window.emulator = new V86({
+                wasm_path: "/microos/v86.wasm",
+                memory_size : 128 * mb,
+                vga_memory_size : 16 * mb,
+                screen_container: document.getElementById("screen_container"),
+                bios: {
+                    url: "/microos/seabios.bin",
+                },
+                vga_bios: {
+                    url: "/microos/vgabios.bin",
+                },
+                cdrom: {
+                    url: "/microos/cdrom.iso",
+                },
+                autostart: true,
+                network_relay_url: "wss://relay.widgetry.org/",
+            });
+
+            let currentLine = [];
+            emulator.bus.register("serial0-output-byte", function(byte) {
+                if (byte === 0x0a) { // Line feed
+                    console.log(currentLine.join(""));
+                    currentLine = [];
+                } else if (byte === 0x0d) { // Carriage return
+                    // Do nothing
+                } else if (byte === 0x08) {
+                    currentLine.pop();
+                } else {
+                    currentLine.push(String.fromCharCode(byte));
+                }
+            }, this);
+        }
+    </script>
+</Layout>
