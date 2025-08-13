@@ -10,6 +10,6 @@ const post = await Astro.callAction(actions.posts.load.orThrow, { id: parseInt(i
 const content = marked.parse(post.content);
 ---
 
-<Layout title={'Glowman554 - ' + post.title} description={'Read about ' + post.title + ' on my blog.'}>
+<Layout title={'Toxic fox - ' + post.title} description={'Read about ' + post.title + ' on my blog.'}>
     <main class="markdown" set:html={content} />
 </Layout>
