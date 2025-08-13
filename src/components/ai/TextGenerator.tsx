@@ -4,7 +4,7 @@ import Loading, { LoadingContext } from '@glowman554/base-components/src/loading
 import { withQuery } from '@glowman554/base-components/src/query/Query';
 
 export interface Props {
-    callback: (text: string) => void;
+    callback?: (url: string) => void;
     system: string;
 }
 
@@ -19,7 +19,12 @@ function Wrapped(props: Props) {
             false,
             (text) => {
                 if (text) {
-                    untrack(() => props.callback)(text);
+                    if (props.callback) {
+                        untrack(() => props.callback!)(text);
+                    } else {
+                        loading.setLoading(false);
+                        setPrompt(text);
+                    }
                 }
             }
         );

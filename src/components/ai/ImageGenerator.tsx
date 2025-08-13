@@ -4,7 +4,7 @@ import Loading, { LoadingContext } from '@glowman554/base-components/src/loading
 import { withQuery } from '@glowman554/base-components/src/query/Query';
 
 export interface Props {
-    callback: (url: string) => void;
+    callback?: (url: string) => void;
 }
 
 function Wrapped(props: Props) {
@@ -28,7 +28,7 @@ function Wrapped(props: Props) {
                 () => actions.uploads.uploadFromUrl.orThrow({ url: prev, name: `ai-${Date.now()}.png` }),
                 loading,
                 true,
-                (res) => untrack(() => props.callback)(res.url)
+                (res) => untrack(() => props.callback ?? ((url: string) => {}))(res.url)
             );
         }
     };
@@ -54,9 +54,11 @@ function Wrapped(props: Props) {
                     <button class="button" type="submit">
                         Generate
                     </button>
-                    <button class="button" type="button" onClick={use}>
-                        Use
-                    </button>
+                    <Show when={props.callback}>
+                        <button class="button" type="button" onClick={use}>
+                            Use
+                        </button>
+                    </Show>
                 </div>
             </div>
         </form>

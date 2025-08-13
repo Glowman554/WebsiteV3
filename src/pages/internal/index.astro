@@ -1,5 +1,7 @@
 ---
 import AdministratorOnly from '../../components/AdministratorOnly';
+import ImageGeneratorOverlay from '../../components/ai/ImageGeneratorOverlay';
+import TextGeneratorOverlay from '../../components/ai/TextGeneratorOverlay';
 import Layout from '../../components/Layout.astro';
 import PasswordChangeButton from '../../components/user/PasswordChangeButton';
 ---
@@ -7,13 +9,29 @@ import PasswordChangeButton from '../../components/user/PasswordChangeButton';
 <Layout title="Toxic fox - Internal" description="For internal use only.">
     <AdministratorOnly client:load />
     <PasswordChangeButton client:load />
-    <div>
-        <a class="underline" href="/internal/downloads">Downloads</a>
+
+    <div class="m-4 rounded-xl bg-neutral-800">
+        <div class="center p-2">
+            <h2>Tools</h2>
+        </div>
+        <div class="center">
+            <TextGeneratorOverlay
+                client:load
+                system="You are a person called FoxBoy. You are a furry. Please use furry language and use emojis."
+                text="Generate text (furry)"
+            />
+            <TextGeneratorOverlay
+                client:load
+                system="You are an AI assistant generating technical blog posts written in markdown. You should not use anything that is not included in standard markdown."
+                text="Generate text (blog)"
+            />
+            <ImageGeneratorOverlay client:load />
+        </div>
     </div>
-    <div>
-        <a class="underline" href="/internal/projects">Projects</a>
-    </div>
-    <div>
-        <a class="underline" href="/internal/posts">Blog posts</a>
+
+    <div class="center m-4 rounded-xl bg-neutral-800">
+        <a class="p-2 underline hover:text-blue-400" href="/internal/downloads">Downloads</a>
+        <a class="p-2 underline hover:text-blue-400" href="/internal/projects">Projects</a>
+        <a class="p-2 underline hover:text-blue-400" href="/internal/posts">Blog posts</a>
     </div>
 </Layout>
