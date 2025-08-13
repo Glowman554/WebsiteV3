@@ -11,7 +11,7 @@ export default function () {
             <button class="button" onClick={() => setNewVisible(true)}>
                 New download
             </button>
-            <Overlay visible={newVisible()}  reset={() => setNewVisible(false)}>
+            <Overlay visible={newVisible()} reset={() => setNewVisible(false)}>
                 <DownloadEditor
                     submit={(name, link, loading) =>
                         withQuery(

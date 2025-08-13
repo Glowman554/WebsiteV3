@@ -24,7 +24,7 @@ function Wrapped(props: Props) {
             <table>
                 <tbody>
                     <tr>
-                        <td class="text-nowrap pr-2">Username</td>
+                        <td class="pr-2 text-nowrap">Username</td>
                         <td class="w-full">
                             <input
                                 type="text"
@@ -36,7 +36,7 @@ function Wrapped(props: Props) {
                         </td>
                     </tr>
                     <tr>
-                        <td class="text-nowrap pr-2"> Password</td>
+                        <td class="pr-2 text-nowrap"> Password</td>
                         <td class="w-full">
                             <input
                                 type="password"
