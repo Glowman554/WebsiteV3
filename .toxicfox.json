@@ -1,0 +1,27 @@
+{
+    "build": [
+        {
+            "command": "sudo docker build -t glowman554/websitev3 .",
+            "directory": "{{service}}"
+        }
+    ],
+    "containers": [
+        {
+            "name": "websitev3",
+            "image": "glowman554/websitev3",
+            "environment": {
+                "SERVER_KEY_PATH": "/etc/letsencrypt/live/toxicfox.de/privkey.pem",
+                "SERVER_CERT_PATH": "/etc/letsencrypt/live/toxicfox.de/fullchain.pem",
+                "PORT": "443"
+            },
+            "mounts": {
+                "/etc/letsencrypt": "/etc/letsencrypt",
+                "{{base}}/data/WebsiteV3/config.json": "/srv/config.json",
+                "{{base}}/data/WebsiteV3/data.db": "/srv/data.db"
+            },
+            "networks": [
+                "router"
+            ]
+        }
+    ]
+}
