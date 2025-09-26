@@ -19,9 +19,7 @@
                 "{{base}}/data/WebsiteV3/config.json": "/srv/config.json",
                 "{{base}}/data/WebsiteV3/data.db": "/srv/data.db"
             },
-            "networks": [
-                "router"
-            ]
+            "networks": ["router"]
         }
     ]
 }
