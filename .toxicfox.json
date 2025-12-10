@@ -11,8 +11,8 @@
             "image": "glowman554/websitev3",
             "privileged": true,
             "environment": {
-                "SERVER_KEY_PATH": "/etc/letsencrypt/live/toxicfox.de/privkey.pem",
-                "SERVER_CERT_PATH": "/etc/letsencrypt/live/toxicfox.de/fullchain.pem",
+                "SERVER_KEY_PATH": "/etc/letsencrypt/live/toxicfox.de-0001/privkey.pem",
+                "SERVER_CERT_PATH": "/etc/letsencrypt/live/toxicfox.de-0001/fullchain.pem",
                 "PORT": "443"
             },
             "mounts": {
