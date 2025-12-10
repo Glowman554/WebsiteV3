@@ -1,6 +1,6 @@
 import { execSync } from 'child_process';
 
-const targetInterface = 'wlo1';
+const targetInterface = 'eth0';
 
 function invokeIptables(command: string) {
     command = '/sbin/iptables ' + command;

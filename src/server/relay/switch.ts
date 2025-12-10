@@ -5,8 +5,8 @@ import { config } from '../../config';
 
 let tap: Tap | null = null;
 
-const network = '10.10.0.0';
-const tapip = '10.10.0.1/24';
+const network = '192.168.8.0/24';
+const tapip = '192.168.8.1/24';
 
 const dhcp = new SimpleDHCPServer(tapip.split('/').shift()!);
 
