@@ -23,11 +23,13 @@
         "@tailwindcss/vite": "^4.0.8",
         "@teever/ez-hook": "npm:@jsr/teever__ez-hook@^0.3.5",
         "astro": "^5.14.1",
+        "astro-node-websocket": "^1.3.2",
         "drizzle-orm": "^0.38.0",
         "marked": "^15.0.4",
         "openai": "^4.76.3",
         "solid-js": "^1.9.3",
         "tailwindcss": "^4.0.8",
+        "tuntap2": "^0.9.1",
         "zod": "^3.24.1"
     },
     "devDependencies": {

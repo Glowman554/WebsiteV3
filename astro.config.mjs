@@ -2,7 +2,7 @@
 import { defineConfig } from 'astro/config';
 import solid from '@astrojs/solid-js';
 
-import node from '@astrojs/node';
+import nodeWebsocket from 'astro-node-websocket';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -23,7 +23,7 @@ export default defineConfig({
         plugins: [tailwindcss()],
     },
 
-    adapter: node({
+    adapter: nodeWebsocket({
         mode: 'standalone',
     }),
 });

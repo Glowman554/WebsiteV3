@@ -14,6 +14,22 @@ export const prerender = false;
 
     <script>
         window.onload = function () {
+            function urlWithPrefix(url: string, ws: boolean): string {
+                const prefix = localStorage.getItem('prefix');
+                const prefixed = prefix ? prefix + url : url;
+
+                if (ws) {
+                    if (!prefixed.startsWith('http')) {
+                        return prefixed;
+                    }
+                    const parsed = new URL(prefixed);
+                    parsed.protocol = parsed.protocol === 'http:' ? 'ws:' : 'wss:';
+                    return parsed.href;
+                }
+
+                return prefixed;
+            }
+
             const mb = 1024 * 1024;
 
             var emulator = (window.emulator = new V86({
@@ -31,7 +47,7 @@ export const prerender = false;
                     url: '/microos/cdrom.iso',
                 },
                 autostart: true,
-                network_relay_url: 'wss://relay.widgetry.org/',
+                network_relay_url: urlWithPrefix('/api/v1/relay', true),
             }));
 
             let currentLine = [];

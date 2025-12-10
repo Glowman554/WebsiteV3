@@ -9,6 +9,7 @@
         {
             "name": "websitev3",
             "image": "glowman554/websitev3",
+            "privileged": true,
             "environment": {
                 "SERVER_KEY_PATH": "/etc/letsencrypt/live/toxicfox.de/privkey.pem",
                 "SERVER_CERT_PATH": "/etc/letsencrypt/live/toxicfox.de/fullchain.pem",
@@ -19,9 +20,7 @@
                 "{{base}}/data/WebsiteV3/config.json": "/srv/config.json",
                 "{{base}}/data/WebsiteV3/data.db": "/srv/data.db"
             },
-            "networks": [
-                "router"
-            ]
+            "networks": ["router"]
         }
     ]
 }

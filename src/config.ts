@@ -25,6 +25,7 @@ const schema = z.object({
     }),
     database: z.object({ authToken: z.string().optional(), url: z.string() }),
     webhook: z.string().url(),
+    enableTap: z.boolean().default(false),
 });
 
 export const config = validateOrThrow(schema, JSON.parse(new TextDecoder().decode(readFileSync('config.json'))));
