@@ -8,8 +8,15 @@ export const prerender = false;
     <script is:inline src="/microos/libv86.js"></script>
 
     <div id="screen_container" style="width: 100%; display: flex; justify-content: center; align-items: center;">
-        <div style="white-space: pre; font: 14px monospace; line-height: 14px"></div>
+        <div style="white-space: pre; font: 14px monospace; line-height: 14px">
+            <p>Loading...</p>
+        </div>
         <canvas style="display: none"></canvas>
+    </div>
+
+    <div class="center flex-col p-4">
+        <progress id="loading-progress" class="m-4 rounded-xl" value="0" max="100"></progress>
+        <p id="loading-text"></p>
     </div>
 
     <script>
@@ -69,6 +76,20 @@ export const prerender = false;
                 },
                 this
             );
+
+            const loading = document.getElementById('loading');
+            const progressBar = document.getElementById('loading-progress');
+            const loadingText = document.getElementById('loading-text');
+
+            emulator.add_listener('download-progress', function (e) {
+                if (e.total) {
+                    const percent = Math.floor((e.loaded / e.total) * 100);
+                    progressBar.value = percent;
+                    loadingText.textContent = `Loading ${e.file_name} (${percent}%)`;
+                } else {
+                    loadingText.textContent = `Loading ${e.file_name}...`;
+                }
+            });
         };
     </script>
 </Layout>
