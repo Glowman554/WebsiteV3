@@ -1,6 +1,6 @@
-wget https://files.catbox.moe/8dpjis.elf -O cdrom/mckrnl.elf
-wget https://files.catbox.moe/bnqnr6.syms -O cdrom/mckrnl.syms
-wget https://files.catbox.moe/zj3g9k.saf -O cdrom/initrd.saf
+wget https://files.catbox.moe/tcfwq4.elf -O cdrom/mckrnl.elf
+wget https://files.catbox.moe/k5jtd7.syms -O cdrom/mckrnl.syms
+wget https://files.catbox.moe/dzf8u5.saf -O cdrom/initrd.saf
 
 xorriso -as mkisofs -R -r -J -b boot/limine/limine-cd.bin \
 	-no-emul-boot -boot-load-size 4 -boot-info-table -hfsplus \
