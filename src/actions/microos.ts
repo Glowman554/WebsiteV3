@@ -161,6 +161,16 @@ export const microos = {
 
             console.log(`Created new build artifact at ${isoUrl.toString()} for preset ${input.preset}`);
 
+            await new Webhook(config.webhook)
+                .setUsername('Website - MicroOS Builder')
+                .addEmbed(
+                    new Embed()
+                        .setTitle('New MicroOS Build')
+                        .setDescription(`A new MicroOS build has been created for preset **${input.preset}**.`)
+                        .addField('ISO URL', isoUrl.toString())
+                )
+                .send();
+
             return buildRecord;
         },
     }),
