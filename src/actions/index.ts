@@ -5,6 +5,7 @@ import { downloads } from './downloads';
 import { openAi } from './openai';
 import { posts } from './posts';
 import { uploads } from './uploads';
+import { microos } from './microos';
 
 export const server = {
     authentication,
@@ -14,4 +15,5 @@ export const server = {
     openAi,
     posts,
     uploads,
+    microos,
 };

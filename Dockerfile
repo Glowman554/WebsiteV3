@@ -1,6 +1,6 @@
 FROM node:23
 
-RUN apt-get update && apt-get install -y iptables
+RUN apt-get update && apt-get install -y iptables curl jq xorriso
 
 WORKDIR /srv
 COPY . .

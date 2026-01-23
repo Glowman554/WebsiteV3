@@ -1,0 +1,14 @@
+---
+import AdministratorOnly from '../../components/AdministratorOnly';
+import Layout from '../../components/Layout.astro';
+import BuildTokenNewButton from '../../components/microos/BuildTokenNewButton';
+import BuildTokenList from '../../components/microos/BuildTokenList.astro';
+
+export const prerender = false;
+---
+
+<Layout title="Toxic fox - MicroOS build tokens (internal)" description="For internal use only.">
+    <AdministratorOnly client:load />
+    <BuildTokenNewButton client:load />
+    <BuildTokenList editMode={true} />
+</Layout>

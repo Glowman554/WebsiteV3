@@ -1,0 +1,21 @@
+---
+import { actions } from 'astro:actions';
+import Layout from '../../components/Layout.astro';
+
+export const prerender = false;
+
+const presets = Astro.callAction(actions.microos.loadAll.orThrow, {});
+---
+
+<Layout title="Toxic fox - MicroOS" description="MicroOS - A small and simple operating system for x86 architecture.">
+    <h1 class="mb-4 text-center text-3xl font-bold">MicroOS Presets</h1>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {
+            (await presets).map((preset) => (
+                <a href={`/microos/${preset.preset}`} class="block rounded-xl border p-4 hover:shadow-lg">
+                    <h2 class="text-xl font-semibold">{preset.preset}</h2>
+                </a>
+            ))
+        }
+    </div>
+</Layout>

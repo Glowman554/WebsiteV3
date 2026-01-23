@@ -47,3 +47,21 @@ export const Downloads = sqliteTable('downloads', {
         .default(sql`(strftime('%s', 'now'))`)
         .notNull(),
 });
+
+export const MicroOSBuilds = sqliteTable('microos_builds', {
+    preset: text('preset').primaryKey().notNull(),
+    kernel: text('kernel').notNull(),
+    symbols: text('symbols').notNull(),
+    initrd: text('initrd').notNull(),
+    isoUrl: text('iso_url').notNull(),
+    updateDate: integer('update_date', { mode: 'timestamp' })
+        .default(sql`(strftime('%s', 'now'))`)
+        .notNull(),
+});
+
+export const MicroOSBuildTokens = sqliteTable('microos_build_tokens', {
+    token: text('token').primaryKey().notNull(),
+    creationDate: integer('creation_date', { mode: 'timestamp' })
+        .default(sql`(strftime('%s', 'now'))`)
+        .notNull(),
+});

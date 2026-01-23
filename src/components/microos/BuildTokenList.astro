@@ -1,0 +1,41 @@
+---
+import { actions } from 'astro:actions';
+import BuildTokenButtons from './BuildTokenButtons';
+
+interface Props {
+    editMode: boolean;
+}
+const { editMode } = Astro.props;
+const tokens = await Astro.callAction(actions.microos.listBuildTokens.orThrow, {});
+---
+
+<table>
+    {
+        tokens.map((token) => (
+            <tr>
+                <td class="text-nowrap">
+                    <code>{token.token}</code>:
+                </td>
+                <td class="w-full pl-2">
+                    <div class="section-small">
+                        <span class="text-muted">
+                            Created at{' '}
+                            {new Date(token.creationDate).toLocaleDateString(undefined, {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric',
+                                hour: '2-digit',
+                                minute: '2-digit',
+                            })}
+                        </span>
+                        {editMode && (
+                            <div class="flex flex-row">
+                                <BuildTokenButtons client:load token={token} />
+                            </div>
+                        )}
+                    </div>
+                </td>
+            </tr>
+        ))
+    }
+</table>
