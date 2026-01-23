@@ -121,9 +121,6 @@ else
 			-efi-boot-part --efi-boot-image --protective-msdos-label \
 			cdrom -o "microos_${preset}.iso" > /dev/null 2>&1
 
-		export UPLOAD_SERVER="https://filething.toxicfox.de/"
-		export UPLOAD_AUTH_TOKEN="pDOt4hNu8P2WpaC0IG4TIIgcu2jLqEwlopEpbcIFe6vNnVfH9ZH9ZJ3czE5R1Z96WlJd3DB0RMcCeFcoQabdpQwE4m3AVlg8GxdF"
-
 		result=$(upload_file "microos_${preset}.iso")
 		echo "$result"
 	)
