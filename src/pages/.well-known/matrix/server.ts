@@ -9,22 +9,7 @@ const headers = {
 };
 
 const matrixConfig = {
-    'm.homeserver': {
-        base_url: 'https://matrix.toxicfox.de',
-    },
-    'm.identity_server': {
-        base_url: 'https://vector.im',
-    },
-    'org.matrix.msc4143.rtc_foci': [
-        {
-            type: 'livekit',
-            livekit_service_url: 'https://livekit.toxicfox.de/livekit/jwt',
-        },
-        {
-            type: 'nextgen_new_foci_type',
-            props_for_nextgen_foci: 'val',
-        },
-    ],
+    'm.server': 'matrix.toxicfox.de:443',
 };
 
 export async function GET(context: APIContext) {
