@@ -21,7 +21,7 @@ export default defineConfig({
 
     security: {
         checkOrigin: false
-    }
+    },
 
     vite: {
         plugins: [tailwindcss()],
