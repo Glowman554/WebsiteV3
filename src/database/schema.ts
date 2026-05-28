@@ -85,3 +85,12 @@ export const Avatars = sqliteTable('avatars', {
         .notNull(),
     hidden: integer('hidden', { mode: 'boolean' }).default(false).notNull(),
 });
+
+export const Messages = sqliteTable('messages', {
+    id: integer('id').primaryKey({ autoIncrement: true }).notNull(),
+    displayname: text('displayname').notNull(),
+    message: text('message').notNull(),
+    timestamp: integer('timestamp', { mode: 'timestamp' })
+        .default(sql`(strftime('%s', 'now'))`)
+        .notNull(),
+});

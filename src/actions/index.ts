@@ -7,6 +7,7 @@ import { posts } from './posts';
 import { uploads } from './uploads';
 import { microos } from './microos';
 import { avatars } from './avatars';
+import { chat } from './chat';
 
 export const server = {
     authentication,
@@ -18,4 +19,5 @@ export const server = {
     uploads,
     microos,
     avatars,
+    chat,
 };

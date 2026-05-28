@@ -1,0 +1,10 @@
+---
+import AdministratorOnly from '../../components/AdministratorOnly';
+import ChatSubscription from '../../components/ChatSubscription';
+import Layout from '../../components/Layout.astro';
+---
+
+<Layout title="Toxic fox - Chat (Internal)" description="For internal use only.">
+    <AdministratorOnly client:load />
+    <ChatSubscription showDelete={true} client:only />
+</Layout>

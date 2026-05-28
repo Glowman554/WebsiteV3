@@ -1,0 +1,8 @@
+---
+import ChatSubscription from '../components/ChatSubscription';
+import Layout from '../components/Layout.astro';
+---
+
+<Layout title="Toxic fox - Chat" description="Live chat.">
+    <ChatSubscription showDelete={false} client:only />
+</Layout>
