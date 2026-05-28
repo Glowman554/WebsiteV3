@@ -9,6 +9,8 @@ function convert {
     node ../node_modules/@gltf-transform/cli/bin/cli.js optimize resized_$output optimized_$output
 }
 
-convert "Whirly_pooltoy.fbx"
-convert "Whirly.fbx"
-convert "Toxic.fbx"
+# convert "Whirly_pooltoy.fbx"
+# convert "Whirly.fbx"
+# convert "Toxic.fbx"
+convert "Firestorm.fbx"
+convert "Firestorm_pooltoy.fbx"

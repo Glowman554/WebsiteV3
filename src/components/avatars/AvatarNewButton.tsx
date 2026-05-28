@@ -13,9 +13,9 @@ export default function () {
             </button>
             <Overlay visible={newVisible()} reset={() => setNewVisible(false)}>
                 <AvatarEditor
-                    submit={(name, modelUrl, configuration, loading) =>
+                    submit={(name, modelUrl, configuration, hidden, loading) =>
                         withQuery(
-                            () => actions.avatars.create.orThrow({ name, modelUrl, configuration }),
+                            () => actions.avatars.create.orThrow({ name, modelUrl, configuration, hidden }),
                             loading,
                             true,
                             () => location.reload()

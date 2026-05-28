@@ -35,7 +35,7 @@ export const openAi = {
                 response_format: 'url',
             });
 
-            return image.data[0].url;
+            return image.data![0].url;
         },
     }),
 };
