@@ -6,15 +6,26 @@ import { z } from 'astro:schema';
 import { db } from '../database/database';
 
 export type Avatar = InferSelectModel<typeof Avatars>;
+export type PartialAvatar = Omit<Avatar, 'configuration'>;
 
 export const avatars = {
     create: defineAction({
-        input: z.object({ name: z.string(), modelUrl: z.string().url(), configuration: z.string() }),
+        input: z.object({
+            name: z.string(),
+            modelUrl: z.string().url(),
+            configuration: z.string(),
+            hidden: z.boolean(),
+        }),
         async handler(input, context) {
             await permission(context, (u) => u.administrator);
             const result = await db
                 .insert(Avatars)
-                .values({ name: input.name, modelUrl: input.modelUrl, configuration: input.configuration })
+                .values({
+                    name: input.name,
+                    modelUrl: input.modelUrl,
+                    configuration: input.configuration,
+                    hidden: input.hidden,
+                })
                 .returning()
                 .get();
             return result.id;
@@ -35,12 +46,18 @@ export const avatars = {
             modelUrl: z.string().url(),
             configuration: z.string(),
             id: z.number().int(),
+            hidden: z.boolean(),
         }),
         async handler(input, context) {
             await permission(context, (u) => u.administrator);
             await db
                 .update(Avatars)
-                .set({ name: input.name, modelUrl: input.modelUrl, configuration: input.configuration })
+                .set({
+                    name: input.name,
+                    modelUrl: input.modelUrl,
+                    configuration: input.configuration,
+                    hidden: input.hidden,
+                })
                 .where(eq(Avatars.id, input.id));
         },
     }),
@@ -58,7 +75,16 @@ export const avatars = {
 
     loadAll: defineAction({
         async handler() {
-            return await db.select().from(Avatars).orderBy(desc(Avatars.creationDate));
+            return (await db
+                .select({
+                    id: Avatars.id,
+                    name: Avatars.name,
+                    modelUrl: Avatars.modelUrl,
+                    hidden: Avatars.hidden,
+                    creationDate: Avatars.creationDate,
+                })
+                .from(Avatars)
+                .orderBy(desc(Avatars.creationDate))) satisfies PartialAvatar[];
         },
     }),
 };

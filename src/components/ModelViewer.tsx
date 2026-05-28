@@ -5,7 +5,7 @@ import * as THREE from 'three';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js'
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import z from 'zod';
 
 // interface ViewerConfiguration {
@@ -236,22 +236,25 @@ function Wrapped(props: ModelViewerProps) {
 
     return (
         <>
-        <div
-            ref={container}
-            style={{
-                width: '80vw',
-                height: '80vh',
-                // overflow: 'hidden',
-            }}
-        />
-        <div class="center">
-            <button class="button" onClick={() => {
-                setShowSkeleton(!showSkeleton())
-                updateSkeletonHelpersVisibility();
-            }}>
-                {showSkeleton() ? 'Hide Skeleton' : 'Show Skeleton'}
-            </button>
-        </div>
+            <div
+                ref={container}
+                style={{
+                    width: '80vw',
+                    height: '80vh',
+                    // overflow: 'hidden',
+                }}
+            />
+            <div class="center">
+                <button
+                    class="button"
+                    onClick={() => {
+                        setShowSkeleton(!showSkeleton());
+                        updateSkeletonHelpersVisibility();
+                    }}
+                >
+                    {showSkeleton() ? 'Hide Skeleton' : 'Show Skeleton'}
+                </button>
+            </div>
         </>
     );
 }

@@ -4,27 +4,30 @@ import { AvatarEditorButtons } from './AvatarEditor';
 
 interface Props {
     editMode: boolean;
+    showHidden: boolean;
 }
-const { editMode } = Astro.props;
+const { editMode, showHidden } = Astro.props;
 const avatars = await Astro.callAction(actions.avatars.loadAll.orThrow, {});
 ---
 
 <table>
     {
-        avatars.map((avatar) => (
-            <tr>
-                <td class="text-nowrap">{avatar.creationDate.toLocaleDateString()}:</td>
-                <td class="w-full">
-                    <div class="section-small">
-                        <a href={'/avatars/' + avatar.id}>{avatar.name}</a>
-                        {editMode && (
-                            <div class="flex flex-row">
-                                <AvatarEditorButtons avatar={avatar} client:load />
-                            </div>
-                        )}
-                    </div>
-                </td>
-            </tr>
-        ))
+        avatars
+            .filter((avatar) => showHidden || !avatar.hidden)
+            .map((avatar) => (
+                <tr>
+                    <td class="text-nowrap">{avatar.creationDate.toLocaleDateString()}:</td>
+                    <td class="w-full">
+                        <div class="section-small">
+                            <a href={'/avatars/' + avatar.id}>{avatar.name}</a>
+                            {editMode && (
+                                <div class="flex flex-row">
+                                    <AvatarEditorButtons avatar={avatar} client:load />
+                                </div>
+                            )}
+                        </div>
+                    </td>
+                </tr>
+            ))
     }
 </table>

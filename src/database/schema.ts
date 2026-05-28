@@ -83,4 +83,5 @@ export const Avatars = sqliteTable('avatars', {
     creationDate: integer('creation_date', { mode: 'timestamp' })
         .default(sql`(strftime('%s', 'now'))`)
         .notNull(),
+    hidden: integer('hidden', { mode: 'boolean' }).default(false).notNull(),
 });
