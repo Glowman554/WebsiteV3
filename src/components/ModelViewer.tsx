@@ -1,5 +1,5 @@
 import Loading, { LoadingContext } from '@glowman554/base-components/src/loading/Loading';
-import { onMount, onCleanup, useContext } from 'solid-js';
+import { onMount, onCleanup, useContext, createSignal } from 'solid-js';
 
 import * as THREE from 'three';
 
@@ -50,12 +50,20 @@ type ViewerConfiguration = z.infer<typeof schema>;
 export interface ModelViewerProps {
     href: string;
     configuration: ViewerConfiguration;
-    showSkeleton: boolean;
 }
 
 function Wrapped(props: ModelViewerProps) {
     let container: HTMLDivElement | undefined;
     const loading = useContext(LoadingContext);
+
+    const [skeletonHelpers, setSkeletonHelpers] = createSignal<THREE.SkeletonHelper[]>([]);
+    const [showSkeleton, setShowSkeleton] = createSignal(false);
+
+    const updateSkeletonHelpersVisibility = () => {
+        skeletonHelpers().forEach((helper) => {
+            helper.visible = showSkeleton();
+        });
+    };
 
     onMount(() => {
         loading.setLoading(true);
@@ -64,7 +72,8 @@ function Wrapped(props: ModelViewerProps) {
         scene.background = new THREE.Color(0x222222);
 
         const camera = new THREE.PerspectiveCamera(75, container!.clientWidth / container!.clientHeight, 0.1, 1000);
-        camera.position.set(0, 2, 5);
+        camera.position.set(0, 1.5, 2);
+        camera.lookAt(0, 1.5, 0);
 
         const renderer = new THREE.WebGLRenderer({
             antialias: true,
@@ -102,6 +111,7 @@ function Wrapped(props: ModelViewerProps) {
                 const bones: string[] = [];
                 const meshes: string[] = [];
                 const blendShapes = new Set<string>();
+                const skeletonHelpersList: THREE.SkeletonHelper[] = [];
 
                 model.traverse((child) => {
                     if ((child as THREE.Bone).isBone) {
@@ -127,6 +137,7 @@ function Wrapped(props: ModelViewerProps) {
 
                         if (mesh.material) {
                             const material = mesh.material as THREE.Material;
+                            material.alphaTest = 0.5;
                             material.transparent = false;
                             material.depthWrite = true;
                             material.depthTest = true;
@@ -155,12 +166,14 @@ function Wrapped(props: ModelViewerProps) {
                         }
                     }
 
-                    if ((child as THREE.SkinnedMesh).isSkinnedMesh && props.showSkeleton) {
+                    if ((child as THREE.SkinnedMesh).isSkinnedMesh) {
                         const helper = new THREE.SkeletonHelper(model);
                         const material = helper.material as THREE.LineBasicMaterial;
                         material.linewidth = 2;
                         material.color.set(0xff0000);
                         scene.add(helper);
+
+                        skeletonHelpersList.push(helper);
                     }
                 });
 
@@ -168,6 +181,8 @@ function Wrapped(props: ModelViewerProps) {
 
                 scene.add(model);
 
+                setSkeletonHelpers(skeletonHelpersList);
+                updateSkeletonHelpersVisibility();
                 loading.setLoading(false);
 
                 handleResize();
@@ -218,6 +233,7 @@ function Wrapped(props: ModelViewerProps) {
     });
 
     return (
+        <>
         <div
             ref={container}
             style={{
@@ -226,6 +242,15 @@ function Wrapped(props: ModelViewerProps) {
                 // overflow: 'hidden',
             }}
         />
+        <div class="center">
+            <button class="button" onClick={() => {
+                setShowSkeleton(!showSkeleton())
+                updateSkeletonHelpersVisibility();
+            }}>
+                {showSkeleton() ? 'Hide Skeleton' : 'Show Skeleton'}
+            </button>
+        </div>
+        </>
     );
 }
 
