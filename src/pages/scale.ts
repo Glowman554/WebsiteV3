@@ -17,8 +17,8 @@ export async function GET(context: APIContext) {
         throw new Error("Missing parameter 'url'");
     }
 
-    const scale = context.url.searchParams.get('scale') || "1920";
-    
+    const scale = context.url.searchParams.get('scale') || '1920';
+
     const buffer = await scalePngFromUrl(url!, parseInt(scale));
 
     return new Response(buffer, {

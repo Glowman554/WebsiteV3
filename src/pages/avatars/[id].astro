@@ -1,0 +1,19 @@
+---
+import { actions } from 'astro:actions';
+import Layout from '../../components/Layout.astro';
+import '../../styles/markdown.css';
+import ModelViewer, { validateConfiguration } from '../../components/ModelViewer';
+
+export const prerender = false;
+const { id } = Astro.params;
+const avatar = await Astro.callAction(actions.avatars.load.orThrow, { id: parseInt(id || '0') });
+---
+
+<Layout title={'Toxic fox - ' + avatar.name} description={'View ' + avatar.name}>
+    <ModelViewer
+        client:only
+        href={avatar.modelUrl}
+        configuration={validateConfiguration(JSON.parse(avatar.configuration))}
+        showSkeleton={false}
+    />
+</Layout>

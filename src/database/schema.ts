@@ -74,3 +74,13 @@ export const ScaleCache = sqliteTable('scale_cache', {
         .default(sql`(strftime('%s', 'now'))`)
         .notNull(),
 });
+
+export const Avatars = sqliteTable('avatars', {
+    id: integer('id').primaryKey({ autoIncrement: true }),
+    name: text('name').notNull(),
+    modelUrl: text('model_url').notNull(),
+    configuration: text('configuration').notNull(),
+    creationDate: integer('creation_date', { mode: 'timestamp' })
+        .default(sql`(strftime('%s', 'now'))`)
+        .notNull(),
+});

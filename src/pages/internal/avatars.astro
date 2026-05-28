@@ -1,0 +1,14 @@
+---
+import AdministratorOnly from '../../components/AdministratorOnly';
+import AvatarList from '../../components/avatars/AvatarList.astro';
+import AvatarNewButton from '../../components/avatars/AvatarNewButton';
+import Layout from '../../components/Layout.astro';
+
+export const prerender = false;
+---
+
+<Layout title="Toxic fox - Avatars (internal)" description="For internal use only.">
+    <AdministratorOnly client:load />
+    <AvatarNewButton client:load />
+    <AvatarList editMode={true} />
+</Layout>

@@ -1,0 +1,10 @@
+---
+import AvatarList from '../../components/avatars/AvatarList.astro';
+import Layout from '../../components/Layout.astro';
+
+export const prerender = false;
+---
+
+<Layout title="Toxic fox - Avatars" description="My avatars.">
+    <AvatarList editMode={false} />
+</Layout>

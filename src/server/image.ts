@@ -12,7 +12,7 @@ export async function scalePngFromUrl(url: string, scale: number) {
         return blob;
     }
 
-    console.log("Scaling " + url + "...")
+    console.log('Scaling ' + url + '...');
     const response = await fetch(url);
 
     if (!response.ok) {
