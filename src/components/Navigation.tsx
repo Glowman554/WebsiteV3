@@ -9,6 +9,7 @@ export default function () {
             <Entry href="/projects">Projects</Entry>
             <Entry href="/contact">Contact me</Entry>
             <Entry href="/downloads">Downloads</Entry>
+            <Entry href="/avatars">Avatars</Entry>
             <Entry href="/microos">MicroOS</Entry>
             <Entry href="https://github.com/Glowman554">GitHub</Entry>
         </Navigation>
