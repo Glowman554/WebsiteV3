@@ -2,7 +2,7 @@
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
 import { sql } from 'drizzle-orm';
-import { int, integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
+import { blob, int, integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 export const Users = sqliteTable('users', {
     username: text('username').primaryKey().notNull(),
@@ -37,6 +37,7 @@ export const Posts = sqliteTable('posts', {
     creationDate: integer('creation_date', { mode: 'timestamp' })
         .default(sql`(strftime('%s', 'now'))`)
         .notNull(),
+    hidden: integer('hidden', { mode: 'boolean' }).default(false).notNull(),
 });
 
 export const Downloads = sqliteTable('downloads', {
@@ -61,6 +62,14 @@ export const MicroOSBuilds = sqliteTable('microos_builds', {
 
 export const MicroOSBuildTokens = sqliteTable('microos_build_tokens', {
     token: text('token').primaryKey().notNull(),
+    creationDate: integer('creation_date', { mode: 'timestamp' })
+        .default(sql`(strftime('%s', 'now'))`)
+        .notNull(),
+});
+
+export const ScaleCache = sqliteTable('scale_cache', {
+    url: text('url').primaryKey().notNull(),
+    content: blob('content', { mode: 'buffer' }).notNull(),
     creationDate: integer('creation_date', { mode: 'timestamp' })
         .default(sql`(strftime('%s', 'now'))`)
         .notNull(),

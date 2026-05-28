@@ -27,6 +27,7 @@
         "drizzle-orm": "^0.38.0",
         "marked": "^15.0.4",
         "openai": "^4.76.3",
+        "sharp": "^0.34.5",
         "solid-js": "^1.9.3",
         "tailwindcss": "^4.0.8",
         "tuntap2": "^0.9.1",

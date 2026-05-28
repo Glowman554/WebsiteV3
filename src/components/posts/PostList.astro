@@ -4,27 +4,30 @@ import { PostEditorButtons } from './PostEditor';
 
 interface Props {
     editMode: boolean;
+    showHidden: boolean;
 }
-const { editMode } = Astro.props;
+const { editMode, showHidden } = Astro.props;
 const posts = await Astro.callAction(actions.posts.loadAll.orThrow, {});
 ---
 
 <table>
     {
-        posts.map((post) => (
-            <tr>
-                <td class="text-nowrap">{post.creationDate.toLocaleDateString()}:</td>
-                <td class="w-full">
-                    <div class="section-small">
-                        <a href={'/blog/' + post.id}>{post.title}</a>
-                        {editMode && (
-                            <div class="flex flex-row">
-                                <PostEditorButtons client:load post={post} />
-                            </div>
-                        )}
-                    </div>
-                </td>
-            </tr>
-        ))
+        posts
+            .filter((e) => !(e.hidden && !showHidden))
+            .map((post) => (
+                <tr>
+                    <td class="text-nowrap">{post.creationDate.toLocaleDateString()}:</td>
+                    <td class="w-full">
+                        <div class="section-small">
+                            <a href={'/blog/' + post.id}>{post.title}</a>
+                            {editMode && (
+                                <div class="flex flex-row">
+                                    <PostEditorButtons client:load post={post} />
+                                </div>
+                            )}
+                        </div>
+                    </td>
+                </tr>
+            ))
     }
 </table>

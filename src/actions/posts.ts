@@ -10,12 +10,12 @@ export type PartialPost = Omit<Post, 'content'>;
 
 export const posts = {
     create: defineAction({
-        input: z.object({ title: z.string(), content: z.string() }),
+        input: z.object({ title: z.string(), content: z.string(), hidden: z.boolean() }),
         async handler(input, context) {
             await permission(context, (u) => u.administrator);
             const result = await db
                 .insert(Posts)
-                .values({ content: input.content, title: input.title })
+                .values({ content: input.content, title: input.title, hidden: input.hidden })
                 .returning()
                 .get();
             return result.id;
@@ -23,10 +23,13 @@ export const posts = {
     }),
 
     update: defineAction({
-        input: z.object({ id: z.number().int(), title: z.string(), content: z.string() }),
+        input: z.object({ id: z.number().int(), title: z.string(), content: z.string(), hidden: z.boolean() }),
         async handler(input, context) {
             await permission(context, (u) => u.administrator);
-            await db.update(Posts).set({ title: input.title, content: input.content }).where(eq(Posts.id, input.id));
+            await db
+                .update(Posts)
+                .set({ title: input.title, content: input.content, hidden: input.hidden })
+                .where(eq(Posts.id, input.id));
         },
     }),
 
@@ -41,7 +44,7 @@ export const posts = {
     loadAll: defineAction({
         async handler() {
             return (await db
-                .select({ id: Posts.id, title: Posts.title, creationDate: Posts.creationDate })
+                .select({ id: Posts.id, title: Posts.title, creationDate: Posts.creationDate, hidden: Posts.hidden })
                 .from(Posts)
                 .orderBy(desc(Posts.creationDate))) satisfies PartialPost[];
         },

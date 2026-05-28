@@ -13,11 +13,11 @@ import EditButton from '@glowman554/base-components/src/generic/EditButton';
 export type Props =
     | {
           initial?: undefined;
-          submit: (title: string, content: string, loading: LoadingInterface) => void;
+          submit: (title: string, content: string, hidden: boolean, loading: LoadingInterface) => void;
       }
     | {
           initial: Post;
-          submit: (title: string, content: string, loading: LoadingInterface, id: number) => void;
+          submit: (title: string, content: string, hidden: boolean, loading: LoadingInterface, id: number) => void;
       };
 
 function Wrapped(props: Props) {
@@ -27,12 +27,13 @@ function Wrapped(props: Props) {
 
     const [textGeneratorVisible, setTextGeneratorVisible] = createSignal(false);
     const [imageGeneratorVisible, setImageGeneratorVisible] = createSignal(false);
+    const [hidden, setHidden] = createSignal(props.initial?.hidden || false);
 
     const submit = () => {
         if (props.initial) {
-            props.submit(title(), content(), loading, props.initial.id);
+            props.submit(title(), content(), hidden(), loading, props.initial.id);
         } else {
-            props.submit(title(), content(), loading);
+            props.submit(title(), content(), hidden(), loading);
         }
     };
 
@@ -71,6 +72,11 @@ function Wrapped(props: Props) {
                         </button>
                         <button class="button" type="button" onClick={() => setImageGeneratorVisible(true)}>
                             Generate image
+                        </button>
+                        <button class="button" type="button" onClick={() => setHidden(!hidden())}>
+                            <Show when={hidden()} fallback={<>Hide</>}>
+                                Un-hide
+                            </Show>
                         </button>
                         <UploadButton callback={(url) => setContent(content() + '\n' + `![image](${url})`)} />
                     </div>
@@ -127,9 +133,9 @@ export function PostEditorButtons(props: { post: PartialPost }) {
                     {(post) => (
                         <PostEditor
                             initial={post}
-                            submit={(title, content, loading, id) =>
+                            submit={(title, content, hidden, loading, id) =>
                                 withQuery(
-                                    () => actions.posts.update.orThrow({ title, content, id }),
+                                    () => actions.posts.update.orThrow({ title, content, hidden, id }),
                                     loading,
                                     false,
                                     () => location.reload()

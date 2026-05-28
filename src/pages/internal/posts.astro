@@ -10,5 +10,5 @@ export const prerender = false;
 <Layout title="Toxic fox - Posts (internal)" description="For internal use only.">
     <AdministratorOnly client:load />
     <PostNewButton client:load />
-    <PostList editMode={true} />
+    <PostList editMode={true} showHidden={true} />
 </Layout>

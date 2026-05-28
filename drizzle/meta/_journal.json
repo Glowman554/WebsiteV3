@@ -15,6 +15,20 @@
             "when": 1769185948337,
             "tag": "0001_MicroOS builds",
             "breakpoints": true
+        },
+        {
+            "idx": 2,
+            "version": "6",
+            "when": 1779928756137,
+            "tag": "0002_add-hidden",
+            "breakpoints": true
+        },
+        {
+            "idx": 3,
+            "version": "6",
+            "when": 1779931060885,
+            "tag": "0003_add-scale-cache",
+            "breakpoints": true
         }
     ]
 }

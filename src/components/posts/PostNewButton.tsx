@@ -13,9 +13,9 @@ export default function () {
             </button>
             <Overlay visible={newVisible()} reset={() => setNewVisible(false)}>
                 <PostEditor
-                    submit={(title, content, loading) =>
+                    submit={(title, content, hidden, loading) =>
                         withQuery(
-                            () => actions.posts.create.orThrow({ title, content }),
+                            () => actions.posts.create.orThrow({ title, content, hidden }),
                             loading,
                             true,
                             () => location.reload()
