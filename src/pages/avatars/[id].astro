@@ -14,6 +14,5 @@ const avatar = await Astro.callAction(actions.avatars.load.orThrow, { id: parseI
         client:only
         href={avatar.modelUrl}
         configuration={validateConfiguration(JSON.parse(avatar.configuration))}
-        showSkeleton={false}
     />
 </Layout>

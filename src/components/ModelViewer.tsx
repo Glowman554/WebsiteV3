@@ -5,6 +5,7 @@ import * as THREE from 'three';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js'
 import z from 'zod';
 
 // interface ViewerConfiguration {
@@ -102,6 +103,7 @@ function Wrapped(props: ModelViewerProps) {
         scene.add(grid);
 
         const loader = new GLTFLoader();
+        loader.setMeshoptDecoder(MeshoptDecoder);
 
         loader.load(
             props.href,
