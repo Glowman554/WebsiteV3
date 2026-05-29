@@ -50,6 +50,13 @@
             "when": 1779973868640,
             "tag": "0006_add-messages",
             "breakpoints": true
+        },
+        {
+            "idx": 7,
+            "version": "6",
+            "when": 1780044593622,
+            "tag": "0007_add-size-tag",
+            "breakpoints": true
         }
     ]
 }

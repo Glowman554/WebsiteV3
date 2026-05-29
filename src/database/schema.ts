@@ -2,7 +2,7 @@
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
 import { sql } from 'drizzle-orm';
-import { blob, int, integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
+import { blob, int, integer, primaryKey, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 export const Users = sqliteTable('users', {
     username: text('username').primaryKey().notNull(),
@@ -67,13 +67,20 @@ export const MicroOSBuildTokens = sqliteTable('microos_build_tokens', {
         .notNull(),
 });
 
-export const ScaleCache = sqliteTable('scale_cache', {
-    url: text('url').primaryKey().notNull(),
-    content: blob('content', { mode: 'buffer' }).notNull(),
-    creationDate: integer('creation_date', { mode: 'timestamp' })
-        .default(sql`(strftime('%s', 'now'))`)
-        .notNull(),
-});
+export const ScaleCache = sqliteTable(
+    'scale_cache',
+    {
+        url: text('url').notNull(),
+        tag: text('tag').notNull(),
+        content: blob('content', { mode: 'buffer' }).notNull(),
+        creationDate: integer('creation_date', { mode: 'timestamp' })
+            .default(sql`(strftime('%s', 'now'))`)
+            .notNull(),
+    },
+    (table) => ({
+        pk: primaryKey(table.url, table.tag),
+    })
+);
 
 export const Avatars = sqliteTable('avatars', {
     id: integer('id').primaryKey({ autoIncrement: true }),
